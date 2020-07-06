@@ -1,11 +1,11 @@
 <template>
   <v-sheet class="grey lighten-4 px-4">
     <v-row>
-      <v-col cols='6'>
-        <QuotationList tradeType="BUY" />
+      <v-col cols="6">
+        <QuotationList />
       </v-col>
-      <v-col cols='6' >
-        <QuotationList tradeType="SELL"/>
+      <v-col cols="6">
+        <QuotationList isSell />
       </v-col>
     </v-row>
   </v-sheet>

@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div>{{ isBuy ? "Buy" : "Sell" }}</div>
+    <div class="mb-1">{{ isSell ? "卖单" : "买单" }}</div>
     <div
       v-for="(item, index) in quotations"
       :key="index"
       class="mb-1 px-2 py-1 text-caption"
-      :class="color"
+      :class="isSell ? dealColor.sellColor : dealColor.buyColor"
     >
       <div class="d-flex justify-space-around">
         <div>ETH</div>
@@ -17,6 +17,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
+import dealColor from "./utils";
 export default Vue.extend({
   name: "QuotationList",
   data: () => {
@@ -29,34 +30,21 @@ export default Vue.extend({
         { amount: 120, price: 200 },
         { amount: 120, price: 200 },
       ],
+      dealColor,
     };
   },
   props: {
-    tradeType: {
-      validator: (value: string) => {
-        return ["BUY", "SELL"].indexOf(value) != -1;
-      },
-    },
-  },
-  computed: {
-    isBuy(): boolean {
-      return this.tradeType === "BUY";
-    },
-    isSell(): boolean {
-      return this.tradeType === "SELL";
-    },
-    color(): object {
-      return this.isBuy
-        ? { blue: true, "lighten-3": true }
-        : { red: true, "lighten-3": true };
+    isSell: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
     announce(item: { amount: number; price: number }): string {
-      if (this.isBuy) {
-        return `Buy ${item.amount} at ${item.price} BAT each`;
+      if (!this.isSell) {
+        return `Buy ${item.amount} ETH at ${item.price} BAT each`;
       } else {
-        return `Sell ${item.amount} at ${item.price} BAT each`;
+        return `Sell ${item.amount} ETH at ${item.price} BAT each`;
       }
     },
   },
