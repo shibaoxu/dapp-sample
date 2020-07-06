@@ -1,13 +1,11 @@
 <template>
-  <v-sheet>
-    <div>
-      Quotations
-    </div>
-  </v-sheet>
+    <v-sheet>
+        
+    </v-sheet>
 </template>
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  
+    name: "Quotation"
 })
 </script>

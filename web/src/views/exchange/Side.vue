@@ -1,5 +1,5 @@
 <template>
-  <v-sheet class="grey lighten-4 pa-4">
+  <v-sheet class="pa-4">
     <div class="text-button" v-text="'选择的资产'" />
     <div class="d-flex justify-space-around">
       <div class="text-h5 pa-4" v-text="'ETH'" />
@@ -16,12 +16,12 @@
     </div>
     <div class="text-button" v-text="'资金管理'" />
     <div class="text-center">
-      <v-btn class="mr-2" >存款</v-btn>
-      <v-btn >取款</v-btn>
+      <v-btn class="mr-2">存款</v-btn>
+      <v-btn>取款</v-btn>
     </div>
     <div class="text-button" v-text="'操作'" />
     <div class="text-center">
-      <v-btn class="mr-2 blue lighten-3" >买</v-btn>
+      <v-btn class="mr-2 blue lighten-3">买</v-btn>
       <v-btn class="red lighten-3">卖</v-btn>
     </div>
     <div>
