@@ -107,9 +107,9 @@ contract DAX {
         uint256 _pricePerToken
     ) public {}
 
-    // function createMarketOrder(
-    //     bytes32 _type,
-    //     bytes32 _symbol,
-    //     uint256 _maxPrice
-    // ) public {}
+    function sortIdsByPrice(bytes32 _type) public view returns (uint256[] memory){}
+
+    function checkValidPair(bytes32 _firstSymbol, bytes32 _secondSymbol) public view returns (bool){}
+
+    function getTokenPairs(bytes32 _token) public view returns(bytes32[] memory){}
 }
