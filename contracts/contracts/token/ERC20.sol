@@ -11,13 +11,13 @@ contract ERC20 is IERC20 {
     mapping(address => mapping(address => uint256)) private _allowed;
     uint256 private _totalSupply;
 
-    bytes32 private _name;
-    bytes32 private _symbol;
+    string private _name;
+    string private _symbol;
     uint8 private _decimals;
 
     constructor(
-        bytes32 name,
-        bytes32 symbol,
+        string memory name,
+        string memory symbol,
         uint256 initialAmount,
         uint8 decimal
     ) public {
@@ -28,11 +28,11 @@ contract ERC20 is IERC20 {
         _balances[msg.sender] = initialAmount;
     }
 
-    function name() public view returns (bytes32) {
+    function name() public view returns (string memory) {
         return _name;
     }
 
-    function symbol() public view returns (bytes32) {
+    function symbol() public view returns (string memory) {
         return _symbol;
     }
 

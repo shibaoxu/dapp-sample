@@ -3,14 +3,14 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 import "./ERC20.sol";
-contract EIP20Factory {
+contract ERC20Factory {
     mapping(address => address[]) public created;
 
     function createERC20(
         uint256 initialAmount,
-        bytes32 name,
+        string memory name,
         uint8 decimal,
-        bytes32 symbol
+        string memory symbol
     ) public returns (address) {
         ERC20 newToken = (new ERC20(name, symbol, initialAmount, decimal));
         created[msg.sender].push(address(newToken));
@@ -34,5 +34,9 @@ contract EIP20Factory {
             mstore(outputCode, size)
             extcodecopy(addr, add(outputCode, 0x20), 0, size)
         }
+    }
+
+    function getCreated(address addr) public view returns(address[] memory) {
+        return created[addr];
     }
 }

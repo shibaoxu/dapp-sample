@@ -195,9 +195,9 @@
       "name": "name",
       "outputs": [
         {
-          "internalType": "bytes32",
+          "internalType": "string",
           "name": "",
-          "type": "bytes32"
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -208,9 +208,9 @@
       "name": "symbol",
       "outputs": [
         {
-          "internalType": "bytes32",
+          "internalType": "string",
           "name": "",
-          "type": "bytes32"
+          "type": "string"
         }
       ],
       "stateMutability": "view",
@@ -296,16 +296,16 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.6.11+commit.5ef660b1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"cap\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20Capped.sol\":\"ERC20Capped\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x9a9cf02622cd7a64261b10534fc3260449da25c98c9e96d1b4ae8110a20e5806\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2df142592d1dc267d9549049ee3317fa190d2f87eaa565f86ab05ec83f7ab8f5\",\"dweb:/ipfs/QmSkJtcfWo7c42KnL5hho6GFxK6HRNV91XABx1P7xDtfLV\"]},\"/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20.sol\":{\"keccak256\":\"0x2f95c7ee9f79e3efcde3f921b4338d8459b211837f82388cad8b067bd1d5450e\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://356a38024e592a3f7e617320fa63429b3deea9264dccde92f4a2e26acddaa208\",\"dweb:/ipfs/QmSByQprSoxphRKASZyAcsC19vD3ZkEr5LZhZSxW2K6Lwt\"]},\"/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20Capped.sol\":{\"keccak256\":\"0xe5cf4f3c4ce37e944070396ca119754db537f9dc1ca96243b61705454f18135a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9751e6cb5b425570f562d33b70e0c7668763c7b6d7f219c7576d4947c49cc916\",\"dweb:/ipfs/QmWAeZFf5Uu4nkDPpH7sKA4jTCyk39AFmnUi7WNBfUvr5C\"]},\"/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/IERC20.sol\":{\"keccak256\":\"0x45aaff2cbe37d23c846bfa34731b00682535628a8bcfdeb228befa09524b6a39\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8d6f4088d7a97b7d851af4acceb9df19fece481194468298060b41de731ee358\",\"dweb:/ipfs/QmRDANQ1ajduQoahpiVgzuqwGeEBT3oYzQ5ACEQvfTpCkV\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.6.11+commit.5ef660b1\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"cap\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Approval\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"from\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"name\":\"Transfer\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"}],\"name\":\"allowance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"approve\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"cap\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"decimals\",\"outputs\":[{\"internalType\":\"uint8\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"decreaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"spender\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"increaseAllowance\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"name\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"symbol\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"totalSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transfer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"recipient\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"transferFrom\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20Capped.sol\":\"ERC20Capped\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x9a9cf02622cd7a64261b10534fc3260449da25c98c9e96d1b4ae8110a20e5806\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2df142592d1dc267d9549049ee3317fa190d2f87eaa565f86ab05ec83f7ab8f5\",\"dweb:/ipfs/QmSkJtcfWo7c42KnL5hho6GFxK6HRNV91XABx1P7xDtfLV\"]},\"/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20.sol\":{\"keccak256\":\"0xd492bfbb72885a1209b6d6719708c79046a030f69fb20624920c31b1abc82de5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://fba9538ab72853fc99a69cc8dd366c19522e6b03e551c40e806601aad8b95255\",\"dweb:/ipfs/QmcFw65ANnXumwGpzCiUHAPGhNk6hBFQLiNVw4No62vwAX\"]},\"/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20Capped.sol\":{\"keccak256\":\"0xe5cf4f3c4ce37e944070396ca119754db537f9dc1ca96243b61705454f18135a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://9751e6cb5b425570f562d33b70e0c7668763c7b6d7f219c7576d4947c49cc916\",\"dweb:/ipfs/QmWAeZFf5Uu4nkDPpH7sKA4jTCyk39AFmnUi7WNBfUvr5C\"]},\"/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/IERC20.sol\":{\"keccak256\":\"0x45aaff2cbe37d23c846bfa34731b00682535628a8bcfdeb228befa09524b6a39\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8d6f4088d7a97b7d851af4acceb9df19fece481194468298060b41de731ee358\",\"dweb:/ipfs/QmRDANQ1ajduQoahpiVgzuqwGeEBT3oYzQ5ACEQvfTpCkV\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.21 <0.7.0;\n\nimport \"./ERC20.sol\";\n\nabstract contract ERC20Capped is ERC20 {\n    uint256 private _cap;\n\n    constructor(uint256 cap) public{\n        require(cap > 0, \"ERC20Capped: cap is 0\");\n        _cap = cap;\n    }\n\n    function cap() public view returns(uint256){\n        return _cap;\n    }\n\n    function _beforeTokenTransfer(address from, address to, uint256 amount) internal virtual override{\n        super._beforeTokenTransfer(from, to, amount);\n        if (from == address(0)){\n            require(totalSupply() + amount <= _cap, \"ERC20Capped: cap execeed\");\n        }\n    }\n}",
-  "sourcePath": "/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
+  "sourcePath": "/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
   "ast": {
-    "absolutePath": "/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
+    "absolutePath": "/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
     "exportedSymbols": {
       "ERC20Capped": [
         1482
@@ -330,7 +330,7 @@
         "src": "32:32:8"
       },
       {
-        "absolutePath": "/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20.sol",
+        "absolutePath": "/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20.sol",
         "file": "./ERC20.sol",
         "id": 1415,
         "nodeType": "ImportDirective",
@@ -364,7 +364,7 @@
         ],
         "contractDependencies": [
           1357,
-          1654
+          1667
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -373,7 +373,7 @@
         "linearizedBaseContracts": [
           1482,
           1357,
-          1654
+          1667
         ],
         "name": "ERC20Capped",
         "nodeType": "ContractDefinition",
@@ -1230,7 +1230,7 @@
     "src": "32:605:8"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
+    "absolutePath": "/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20Capped.sol",
     "exportedSymbols": {
       "ERC20Capped": [
         1482
@@ -1255,7 +1255,7 @@
         "src": "32:32:8"
       },
       {
-        "absolutePath": "/Users/shibaoxu/dev/learning/dapp-sample/contracts/contracts/token/ERC20.sol",
+        "absolutePath": "/Users/shibaoxu/Documents/dev/learning/etherum/dapp-sample/contracts/contracts/token/ERC20.sol",
         "file": "./ERC20.sol",
         "id": 1415,
         "nodeType": "ImportDirective",
@@ -1289,7 +1289,7 @@
         ],
         "contractDependencies": [
           1357,
-          1654
+          1667
         ],
         "contractKind": "contract",
         "documentation": null,
@@ -1298,7 +1298,7 @@
         "linearizedBaseContracts": [
           1482,
           1357,
-          1654
+          1667
         ],
         "name": "ERC20Capped",
         "nodeType": "ContractDefinition",
@@ -2159,8 +2159,8 @@
     "version": "0.6.11+commit.5ef660b1.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.2.2",
-  "updatedAt": "2020-07-10T10:34:29.126Z",
+  "schemaVersion": "3.2.0",
+  "updatedAt": "2020-07-12T12:20:32.954Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
