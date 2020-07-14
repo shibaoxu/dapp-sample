@@ -3,3 +3,4 @@
 **/.DS_Store
 **/.secret
 bin/
+./build
