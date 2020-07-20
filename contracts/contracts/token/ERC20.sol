@@ -2,7 +2,7 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 import "./IERC20.sol";
-import "../math/SafeMath.sol";
+import "@openzeppelin/contracts/math/SafeMath.sol";
 
 contract ERC20 is IERC20 {
     using SafeMath for uint256;
