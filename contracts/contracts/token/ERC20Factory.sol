@@ -1,10 +1,21 @@
 
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.4.21 <0.7.0;
+pragma experimental ABIEncoderV2;
 
 import "./ERC20.sol";
 contract ERC20Factory {
+    struct Token {
+        string name;
+        string symbol;
+        uint8 decimal;
+        uint256 totalSupply;
+        address creator;
+        address addr;
+    }
+
     mapping(address => address[]) public created;
+    Token[] public tokens;
 
     function createERC20(
         uint256 initialAmount,
@@ -14,6 +25,7 @@ contract ERC20Factory {
     ) public returns (address) {
         ERC20 newToken = (new ERC20(name, symbol, initialAmount, decimal));
         created[msg.sender].push(address(newToken));
+        tokens.push(Token(name, symbol, decimal, initialAmount, msg.sender, address(newToken)));
         newToken.transfer(msg.sender, initialAmount);
         return address(newToken);
     }
@@ -39,4 +51,8 @@ contract ERC20Factory {
     function getCreated(address addr) public view returns(address[] memory) {
         return created[addr];
     }
+    function getTokens() public view returns(Token[] memory){
+        return tokens;
+    }
+
 }

@@ -21,6 +21,8 @@
       <v-toolbar-title>
         <span>DApp示例</span>
       </v-toolbar-title>
+      <v-spacer/>
+      <current-account/>
     </v-app-bar>
     <v-main>
       <router-view />
@@ -32,22 +34,27 @@
   </v-app>
 </template>
 <script>
+import CurrentAccount from "@/components/CurrentAccount"
 export default {
   name: "App",
-  components: {},
+  components: {
+    CurrentAccount
+  },
 
   data: () => ({
     dapps: [
-      { title: "交易所", icon: "mdi-view-dashboard", to: "Exchange" },
-      { title: "社交音乐", icon: "mdi-image", to: "Home"},
+      { title: "首页", icon: "mdi-home", to: "/Dashboard" },
+      { title: "Token", icon: "mdi-ethereum", to: "/token" },
+      { title: "交易所", icon: "mdi-view-dashboard", to: "/Exchange" },
+      { title: "社交音乐", icon: "mdi-image", to: "Home" },
       { title: "About", icon: "mdi-help-box", to: "Home" },
     ],
     drawer: null,
   }),
   computed: {
     breakpoint() {
-      return this.$vuetify.breakpoint
-    }
-  }
+      return this.$vuetify.breakpoint;
+    },
+  },
 };
 </script>
