@@ -1,10 +1,12 @@
 import web3 from "@/utils/web3";
 import config from "@/config.json";
 import tokenFactoryAbi from "../abi/ERC20Factory.json";
+import ERC20Abi from "../abi/ERC20.json";
 
 const tokenFactory = new web3.eth.Contract(
-  <any>tokenFactoryAbi.abi,
-  config.contractAddress.tokenFactory.ganache,
+  // eslint-disable-next-line
+  (tokenFactoryAbi as any).abi,
+  config.contractAddress.tokenFactory,
 );
 
 export async function issueToken(token: {
@@ -15,9 +17,26 @@ export async function issueToken(token: {
 }) {
   await tokenFactory.methods
     .createERC20(token.supply, token.name, token.decimal, token.symbol)
-    .send({ from: "0x2Ae0B52AfF2C39180236FE5ac1BD1982f2394eEf" });
+    .send({ from: web3.eth.defaultAccount });
 }
 
-export async function getTokens(){
-    return await tokenFactory.methods.getTokens().call({from: "0x2Ae0B52AfF2C39180236FE5ac1BD1982f2394eEf"})
+export async function getTokens() {
+  const tokens = await tokenFactory.methods.getTokens().call();
+  return tokens.map((token: any) => {
+    return {
+      name: token.name,
+      symbol: token.symbol,
+      decimal: token.decimal,
+      totalSupply: token.totalSupply,
+      creator: token.creator,
+      addr: token.addr,
+    };
+  });
 }
+
+export async function getBalance(tokenAddress: string, account: string):Promise<number> {
+  const token = new web3.eth.Contract((ERC20Abi as any).abi, tokenAddress);
+  return await token.methods.balanceOf(account).call()
+}
+
+// export async function getAllowed(owner: string, spender: string) {}

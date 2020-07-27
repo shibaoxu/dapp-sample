@@ -1,19 +1,36 @@
 <template>
   <div class="mb-2">
-    <v-chip color="primary"
-      ><v-icon left>mdi-account-circle-outline</v-icon
-      >0xE87444Df32535993308470E97C53407916612303</v-chip
-    >
+    <v-chip color="primary" class="d-none d-md-inline-block">
+      <v-icon left>mdi-account-circle-outline</v-icon>
+      {{ account }}
+    </v-chip>
+    <v-chip color="success">
+      <v-icon left>mdi-account-circle-outline</v-icon>
+      {{balance}}ETH
+    </v-chip>
   </div>
 </template>
 <script lang="ts">
 import Vue from "vue";
-import { getAccounts } from "../utils/web3";
+import { getAccounts, getBalance } from "@/api/eth";
 
 export default Vue.extend({
   name: "CurrentAccount",
+  data() {
+    return {
+      account: "",
+      balance: "0",
+    };
+  },
+  methods: {
+    getCurrentAccountInfo: async function(){
+      const accouts = await getAccounts();
+      this.account = accouts[0];
+      this.balance = await getBalance(this.account);
+    }
+  },
   mounted() {
-      getAccounts().then(accounts => console.log(accounts)).catch(err => console.log(err))
+    this.getCurrentAccountInfo();
   },
 });
 </script>

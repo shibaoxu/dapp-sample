@@ -3,7 +3,7 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "@/Home.vue";
 import Exchange from "@/views/exchange/index.vue";
 import Dashboard from "@/views/home/Dashboard.vue";
-import Token from "@/views/token/index.vue";
+import Tokens from "@/views/token/tokens.vue";
 import Issure from "@/views/token/Issure.vue";
 Vue.use(VueRouter);
 
@@ -24,8 +24,8 @@ const routes: Array<RouteConfig> = [
       },
       {
         path: "token",
-        name: "Token",
-        component: Token,
+        name: "Tokens",
+        component: Tokens,
       },
     ],
   },

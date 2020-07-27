@@ -46,8 +46,7 @@ import { getTokens } from "@/api/tokenApi";
 import numeral from "numeral";
 export default Vue.extend({
   name: "Token",
-  components: {
-  },
+  components: {},
   data() {
     return {
       expanded: [],

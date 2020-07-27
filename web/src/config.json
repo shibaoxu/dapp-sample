@@ -1,7 +1,5 @@
 {
   "contractAddress": {
-    "tokenFactory": {
-      "ganache": "0xcE0a440782Fa6fE3eef0641B42bB3817d51cA839"
-    }
+    "tokenFactory": "0x6cD9056BfA4C311C4f1706271dB4490FE8863a44"
   }
 }

@@ -7,7 +7,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import MetaMaskOnboarding from "@metamask/onboarding";
+// import MetaMaskOnboarding from "@metamask/onboarding";
 export default Vue.extend({
   name: "Setup",
   data() {
@@ -17,9 +17,9 @@ export default Vue.extend({
   },
   methods: {
     onInstall() {
-      const onboarding = new MetaMaskOnboarding();
-      onboarding.startOnboarding();
-      this.installing = false;
+      // const onboarding = new MetaMaskOnboarding();
+      // onboarding.startOnboarding();
+      // this.installing = false;
     },
   },
 });
