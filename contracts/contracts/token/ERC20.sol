@@ -3,8 +3,8 @@ pragma solidity >=0.4.21 <0.7.0;
 
 import "./IERC20.sol";
 import "@openzeppelin/contracts/math/SafeMath.sol";
-
-contract ERC20 is IERC20 {
+import "@openzeppelin/contracts/access/Ownable.sol";
+contract ERC20 is IERC20, Ownable {
     using SafeMath for uint256;
 
     mapping(address => uint256) private _balances;

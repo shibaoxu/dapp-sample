@@ -44,7 +44,7 @@ export default {
   data: () => ({
     dapps: [
       { title: "首页", icon: "mdi-home", to: "/Dashboard" },
-      { title: "Token", icon: "mdi-ethereum", to: "/token" },
+      { title: "Token", icon: "mdi-ethereum", to: "/tokens" },
       { title: "交易所", icon: "mdi-view-dashboard", to: "/Exchange" },
       { title: "社交音乐", icon: "mdi-image", to: "Home" },
       { title: "About", icon: "mdi-help-box", to: "Home" },

@@ -3,11 +3,18 @@ import VueRouter, { RouteConfig } from "vue-router";
 import Home from "@/Home.vue";
 import Exchange from "@/views/exchange/index.vue";
 import Dashboard from "@/views/home/Dashboard.vue";
-import Tokens from "@/views/token/tokens.vue";
+import Tokens from "@/views/token/Tokens.vue";
+import Token from "@/views/token/Token.vue";
 import Issure from "@/views/token/Issure.vue";
+import Transfer from "@/views/token/Transfer.vue"
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
+  {
+    path: "/tokens/issure",
+    name: "Issure",
+    component: Issure,
+  },
   {
     path: "/",
     component: Home,
@@ -23,16 +30,22 @@ const routes: Array<RouteConfig> = [
         component: Exchange,
       },
       {
-        path: "token",
+        path: "tokens",
         name: "Tokens",
         component: Tokens,
       },
+      {
+        path: "tokens/:addr",
+        name: "Token",
+        component: Token,
+        props: true,
+      },
+      {
+        path: "tokens/:addr/transfer",
+        name: "Transfer",
+        component: Transfer
+      }
     ],
-  },
-  {
-    path: "/token/issure",
-    name: "Issure",
-    component: Issure,
   },
   {
     path: "/about",

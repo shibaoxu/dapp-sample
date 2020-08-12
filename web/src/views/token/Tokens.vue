@@ -11,6 +11,12 @@
         <template v-slot:item.totalSupply="{ value }">
           <span>{{ formatCurrency(value) }}</span>
         </template>
+        <template v-slot:item.name="{ item }">
+          <router-link
+            :to="{ name: 'Token', params: { ...item }}"
+            >{{ item.name }}</router-link
+          >
+        </template>
         <template v-slot:expanded-item="{ headers, item }">
           <td :colspan="headers.length" class="py-2 px-1 px-sm-4">
             <div class="d-flex justify-start pb-1">

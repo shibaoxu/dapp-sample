@@ -27,6 +27,7 @@ contract ERC20Factory {
         created[msg.sender].push(address(newToken));
         tokens.push(Token(name, symbol, decimal, initialAmount, msg.sender, address(newToken)));
         newToken.transfer(msg.sender, initialAmount);
+        newToken.transferOwnership(msg.sender);
         return address(newToken);
     }
 
