@@ -6,7 +6,7 @@ import Dashboard from "@/views/home/Dashboard.vue";
 import Tokens from "@/views/token/Tokens.vue";
 import Token from "@/views/token/Token.vue";
 import Issure from "@/views/token/Issure.vue";
-import Transfer from "@/views/token/Transfer.vue"
+import Transfer from "@/views/token/Transfer.vue";
 Vue.use(VueRouter);
 
 const routes: Array<RouteConfig> = [
@@ -38,13 +38,18 @@ const routes: Array<RouteConfig> = [
         path: "tokens/:addr",
         name: "Token",
         component: Token,
-        props: true,
+        // props: true,
+        props: route => ({
+          addr: route.params.addr,
+          openPanel: route.query.openPanel ? Number(route.query.openPanel) : 0,
+        }),
       },
       {
-        path: "tokens/:addr/transfer",
+        path: "tokens/:tokenAddr/transfer",
         name: "Transfer",
-        component: Transfer
-      }
+        component: Transfer,
+        props: true,
+      },
     ],
   },
   {

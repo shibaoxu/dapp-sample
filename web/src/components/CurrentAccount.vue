@@ -6,7 +6,7 @@
     </v-chip>
     <v-chip color="success">
       <v-icon left>mdi-account-circle-outline</v-icon>
-      {{balance}}ETH
+      {{ balance }}ETH
     </v-chip>
   </div>
 </template>
@@ -23,11 +23,11 @@ export default Vue.extend({
     };
   },
   methods: {
-    getCurrentAccountInfo: async function(){
+    getCurrentAccountInfo: async function() {
       const accouts = await getAccounts();
       this.account = accouts[0];
       this.balance = await getBalance(this.account);
-    }
+    },
   },
   mounted() {
     this.getCurrentAccountInfo();

@@ -5,6 +5,8 @@ pragma experimental ABIEncoderV2;
 
 import "./ERC20.sol";
 contract ERC20Factory {
+    event Issue(Token token);
+
     struct Token {
         string name;
         string symbol;
@@ -12,6 +14,7 @@ contract ERC20Factory {
         uint256 totalSupply;
         address creator;
         address addr;
+        uint256 createTime;
     }
 
     mapping(address => address[]) public created;
@@ -22,13 +25,14 @@ contract ERC20Factory {
         string memory name,
         uint8 decimal,
         string memory symbol
-    ) public returns (address) {
+    ) public{
         ERC20 newToken = (new ERC20(name, symbol, initialAmount, decimal));
         created[msg.sender].push(address(newToken));
-        tokens.push(Token(name, symbol, decimal, initialAmount, msg.sender, address(newToken)));
+        Token memory token = Token(name, symbol, decimal, initialAmount, msg.sender, address(newToken), block.timestamp);        
         newToken.transfer(msg.sender, initialAmount);
         newToken.transferOwnership(msg.sender);
-        return address(newToken);
+        tokens.push(token);
+        emit Issue(token);
     }
 
     function _codeAt(address addr)

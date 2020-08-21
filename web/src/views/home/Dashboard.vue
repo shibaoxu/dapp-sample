@@ -1,6 +1,6 @@
-<template> 
-    <Introduce v-if="isMetaMashInstalled()"/>
-    <Setup v-else/>
+<template>
+  <Introduce v-if="isMetaMashInstalled()" />
+  <Setup v-else />
 </template>
 <script lang="ts">
 import { isMetaMashInstalled } from "@/utils/web3.ts";

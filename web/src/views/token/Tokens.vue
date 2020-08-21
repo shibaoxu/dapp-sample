@@ -8,14 +8,14 @@
         :expanded.sync="expanded"
         item-key="symbol"
       >
-        <template v-slot:item.totalSupply="{ value }">
-          <span>{{ formatCurrency(value) }}</span>
+        <template v-slot:item.totalSupply="{ item }">
+          <!-- {{item.name}} -->
+          <span>{{ formatCurrency(item.totalSupply, item.decimal, item.symbol) }}</span>
         </template>
         <template v-slot:item.name="{ item }">
-          <router-link
-            :to="{ name: 'Token', params: { ...item }}"
-            >{{ item.name }}</router-link
-          >
+          <router-link :to="{ name: 'Token', params: { ...item } }">{{
+            item.name
+          }}</router-link>
         </template>
         <template v-slot:expanded-item="{ headers, item }">
           <td :colspan="headers.length" class="py-2 px-1 px-sm-4">
@@ -27,14 +27,20 @@
             </div>
             <div class="d-flex justify-start flex-wrap pb-1">
               <div style="width: 80px">发行者</div>
-              <div>
+              <div style="overflow-wrap:anywhere">
                 <kbd>{{ item.creator }}</kbd>
               </div>
             </div>
-            <div class="d-flex justify-start flex-wrap">
+            <div class="d-flex justify-start flex-wrap pb-1">
               <div style="width: 80px">合约地址</div>
-              <div class="text-caption text-md-body-1">
+              <div style="overflow-wrap:anywhere" class="text-caption text-md-body-1">
                 <kbd>{{ item.addr }}</kbd>
+              </div>
+            </div>
+            <div class="d-flex justify-start flex-wrap">
+              <div style="width: 80px">创建时间</div>
+              <div class="text-caption text-md-body-1">
+                <kbd>{{ item.createTime }}</kbd>
               </div>
             </div>
           </td>
@@ -48,7 +54,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import { getTokens } from "@/api/tokenApi";
+import { getTokens, TokenSummary } from "@/api/tokenApi";
 import numeral from "numeral";
 export default Vue.extend({
   name: "Token",
@@ -56,7 +62,7 @@ export default Vue.extend({
   data() {
     return {
       expanded: [],
-      tokens: [],
+      tokens: [] as TokenSummary[],
       headers: [
         { text: "名称", align: "start", sortable: false, value: "name" },
         { text: "代码", align: "start", sortable: false, value: "symbol" },
@@ -65,8 +71,8 @@ export default Vue.extend({
     };
   },
   methods: {
-    formatCurrency(value: number): string {
-      return numeral(value).format("0,0");
+    formatCurrency(value: number, decimal: number, symbol: string): string {   
+      return `${numeral(value/(10**decimal)).format("0,0")} ${symbol}`;
     },
   },
   mounted: function() {

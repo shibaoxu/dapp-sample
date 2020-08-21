@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="text-caption font-weight-light">{{label}}</div>
-    <div style="overflow-wrap:anywhere">{{text}}</div>
+    <div class="text-caption font-weight-light">{{ label }}</div>
+    <div style="overflow-wrap:anywhere">{{ text ? text : "" }}</div>
   </div>
 </template>
 <script lang="ts">
@@ -12,10 +12,12 @@ export default Vue.extend({
     label: {
       required: true,
       type: String,
+      default: "",
     },
     text: {
       required: true,
-      type: String,
+      type: [String, Number],
+      default: "",
     },
   },
 });

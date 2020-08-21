@@ -38,6 +38,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { issueToken } from "@/api/tokenApi";
+import router from "@/router" 
 export default Vue.extend({
   name: "Issure",
   data() {
@@ -79,7 +80,9 @@ export default Vue.extend({
     issureToken: function() {
       // eslint-disable-next-line
       if ((this.$refs.form as any).validate()) {
-        issueToken(this.formData);
+        issueToken(this.formData).then(d => {
+          router.push({name: "Tokens"})
+        })
       }
     },
   },

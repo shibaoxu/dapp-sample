@@ -21,8 +21,8 @@
       <v-toolbar-title>
         <span>DApp示例</span>
       </v-toolbar-title>
-      <v-spacer/>
-      <current-account/>
+      <v-spacer />
+      <current-account />
     </v-app-bar>
     <v-main>
       <router-view />
@@ -34,11 +34,11 @@
   </v-app>
 </template>
 <script>
-import CurrentAccount from "@/components/CurrentAccount"
+import CurrentAccount from "@/components/CurrentAccount";
 export default {
   name: "App",
   components: {
-    CurrentAccount
+    CurrentAccount,
   },
 
   data: () => ({
