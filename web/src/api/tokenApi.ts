@@ -3,9 +3,7 @@ import { getCurrentAccount } from "./eth";
 import config from "@/config.json";
 import tokenFactoryAbi from "../abi/ERC20Factory.json";
 import ERC20Abi from "../abi/ERC20.json";
-import numeral from "numeral";
 import { EventData } from "web3-eth-contract";
-import {} from "web3-utils"
 
 const tokenFactory = new web3.eth.Contract(
   // eslint-disable-next-line
@@ -17,7 +15,7 @@ export async function issueToken(token: {
   name: string;
   symbol: string;
   decimal: number;
-  supply: number;
+  supply: string;
 }) {
   return tokenFactory.methods
     .createERC20(token.supply, token.name, token.decimal, token.symbol)
@@ -33,6 +31,7 @@ export interface TokenSummary {
   addr: string;
   createTime?: string;
 }
+
 export async function getTokens(): Promise<TokenSummary[]> {
   const tokens = await tokenFactory.methods.getTokens().call();
   // eslint-disable-next-line
@@ -41,7 +40,7 @@ export async function getTokens(): Promise<TokenSummary[]> {
       name: token.name,
       symbol: token.symbol,
       decimal: Number(token.decimal),
-      totalSupply: token.totalSupply,
+      totalSupply: web3.utils.fromWei(token.totalSupply),
       creator: token.creator,
       addr: token.addr,
       createTime: new Date(Number(token.createTime) * 1000).toLocaleString(),
@@ -59,20 +58,11 @@ export async function getBalance(
   }
   // eslint-disable-next-line
   const token = new web3.eth.Contract((ERC20Abi as any).abi, tokenAddress);
-  // const decimal = token.methods.decimal().call
-  // return await token.methods.balanceOf(account).call();
-
-  return Promise.all([
-    token.methods.decimals().call(),
-    token.methods.balanceOf(account).call()
-  ]).then(values => {
-    return 
-  })
+  const balance = await token.methods.balanceOf(account).call();
+  return web3.utils.fromWei(balance);
 }
 
-export async function getTokenSummary(
-  addr: string,
-): Promise<TokenSummary> {
+export async function getTokenSummary(addr: string): Promise<TokenSummary> {
   // eslint-disable-next-line
   const token = new web3.eth.Contract((ERC20Abi as any).abi, addr);
   return Promise.all([
@@ -86,9 +76,9 @@ export async function getTokenSummary(
       name: values[0],
       symbol: values[1],
       decimal: Number(values[2]),
-      totalSupply: numeral(Number(values[3])/10**Number(values[2])).format("0,0"),
+      totalSupply: web3.utils.fromWei(values[3]),
       creator: values[4],
-      addr: addr
+      addr: addr,
     };
     return tokenSummary;
   });
@@ -98,29 +88,41 @@ export async function transfer(addr: string, to: string, amount: string) {
   // eslint-disable-next-line
   const account = await getCurrentAccount();
   // eslint-disable-next-line
-  const token = new web3.eth.Contract(ERC20Abi.abi, addr);
-  console.log(to, amount);
+  const token = new web3.eth.Contract((ERC20Abi as any).abi, addr);
   return token.methods.transfer(to, amount).send({ from: account });
+  // token.methods.transfer(to, amount).send({ from: account });
 }
 
 export interface TransferEventLog {
   from: string;
   to: string;
-  value: number;
+  value: string;
   blockHash: string;
   blockNumber: number;
+  timestamp: string;
 }
 
-function assembleTransferEventLog(events: EventData[]): TransferEventLog[] {
-  return events.map(event => {
-    return {
+async function getBlockTime(blockNumber: number): Promise<string> {
+  const info = await web3.eth.getBlock(blockNumber);
+  return new Date((info.timestamp as number) * 1000).toLocaleString();
+}
+
+async function assembleTransferEventLog(
+  events: EventData[],
+): Promise<TransferEventLog[]> {
+  const assembledEvents: TransferEventLog[] = [];
+  for (const event of events) {
+    const block = await web3.eth.getBlock(event.blockNumber);
+    assembledEvents.push({
       from: event.returnValues.from as string,
       to: event.returnValues.to as string,
-      value: event.returnValues.value as number,
+      value: web3.utils.fromWei(event.returnValues.value).toString(),
       blockHash: event.blockHash,
       blockNumber: event.blockNumber,
-    };
-  });
+      timestamp: new Date((block.timestamp as number) * 1000).toLocaleString(),
+    });
+  }
+  return assembledEvents;
 }
 
 export async function getTransferRecords(
@@ -138,10 +140,10 @@ export async function getTransferRecords(
     fromBlock: 0,
     toBlock: "latest",
   });
-  return assembleTransferEventLog(events);
+  return await assembleTransferEventLog(events);
 }
 
-export async function getReceiveRecord(addr: string, account?: string | null) {
+export async function getReceiveRecords(addr: string, account?: string | null) {
   if (!account) {
     account = await getCurrentAccount();
   }
@@ -153,5 +155,5 @@ export async function getReceiveRecord(addr: string, account?: string | null) {
     fromBlock: 0,
     toBlock: "latest",
   });
-  return assembleTransferEventLog(events);
+  return await assembleTransferEventLog(events);
 }

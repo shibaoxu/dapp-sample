@@ -5,6 +5,12 @@
       <v-card-text>
         <v-form ref="form" class="mx-4 mb-4">
           <v-text-field
+            disabled
+            label="当前余额"
+            :rules="formRules.balance"
+            v-model="balance"
+          />
+          <v-text-field
             label="对方账户"
             :rules="formRules.address"
             v-model="to"
@@ -35,6 +41,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
+import web3 from "@/utils/web3";
 import { transfer } from "@/api/tokenApi";
 import router from "@/router";
 export default Vue.extend({
@@ -42,12 +49,14 @@ export default Vue.extend({
   data() {
     return {
       to: "",
-      amount: 0,
+      balance: "0",
+      amount: "0",
       loading: false,
       message: "",
       formRules: {
         address: [(v: string) => !!v || "转账地址必填"],
         amount: [(v: number) => v > 0 || "转账金额必须大于0"],
+        balance: [(v:string) => !! "当前余额不能为空"]
       },
       snackbar: {
         message: "",
@@ -63,14 +72,19 @@ export default Vue.extend({
     },
   },
   methods: {
+    checkAmount():boolean {
+      return web3.utils.toBN(this.balance).gte(web3.utils.toBN(this.amount))
+    },
     transfer() {
-      if (this.$refs.form.validate()) {
+      // eslint-disable-next-line
+      if ((this.$refs.form as any).validate()) {
         this.loading = true;
         transfer(this.tokenAddr, this.to, this.amount)
-          .then(data => {
+          .then(() => {
             this.snackbar.color = "success";
             this.snackbar.message = "转账成功";
-            this.$refs.form.reset();
+            // eslint-disable-next-line
+            (this.$refs.form as any).reset();
           })
           .catch(err => {
             this.snackbar.message = "转账失败";
@@ -87,7 +101,7 @@ export default Vue.extend({
       router.push({
         name: "Token",
         params: { addr: this.tokenAddr },
-        query: { openPanel: 1 },
+        query: { openPanel: "1" },
       });
     },
   },

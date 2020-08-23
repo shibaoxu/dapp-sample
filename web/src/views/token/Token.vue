@@ -4,7 +4,7 @@
       <v-expansion-panel>
         <v-expansion-panel-header>基本信息</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <basic :addr= "addr"/>
+          <basic :addr="addr" />
         </v-expansion-panel-content>
       </v-expansion-panel>
       <v-expansion-panel>
@@ -16,7 +16,7 @@
       <v-expansion-panel>
         <v-expansion-panel-header>交易记录</v-expansion-panel-header>
         <v-expansion-panel-content>
-          <transaction :transferRecords="transferRecords" :receiveRecords="receiveRecords"/>
+          <transaction :addr="addr" />
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
@@ -24,45 +24,23 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import VerticalTextField from "@/components/VerticalTextField.vue";
-import Basic from "./tokenInfo/Basic";
-import Account from "./tokenInfo/Account"
-import Transaction from "./tokenInfo/Transaction"
-import {
-  getTokenSummary,
-  getBalance,
-  getTransferRecords,
-  getReceiveRecord,
-} from "@/api/tokenApi";
+import Basic from "./tokenInfo/Basic.vue";
+import Account from "./tokenInfo/Account.vue";
+import Transaction from "./tokenInfo/Transaction.vue";
 
 export default Vue.extend({
   name: "Token",
   components: {
-    VerticalTextField,
     Basic,
     Account,
-    Transaction
+    Transaction,
   },
   data() {
-    return {
-      balance: "0",
-      transferRecords: [],
-      receiveRecords: [],
-    };
+    return {};
   },
   props: {
     addr: { type: String, required: true },
     openPanel: { type: Number, default: 0 },
-  },
-  mounted() {
-    getBalance(this.addr).then(data => (this.balance = data));
-    getTransferRecords(this.addr)
-      .then(events => (this.transferRecords = events))
-      .catch(error => console.log(error));
-
-    // getReceiveRecord(this.addr)
-    //   .then(events => (this.receiveRecords = events))
-    //   .catch(error => console.log(error));
   },
   methods: {},
 });

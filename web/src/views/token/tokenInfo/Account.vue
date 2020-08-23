@@ -12,7 +12,7 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import VerticalTextField from "@/components/VerticalTextField";
+import VerticalTextField from "@/components/VerticalTextField.vue";
 import { getBalance } from "@/api/tokenApi";
 export default Vue.extend({
   name: "Account",
@@ -31,7 +31,7 @@ export default Vue.extend({
     };
   },
   mounted: function() {
-      getBalance(this.addr).then(balance => (this.balance = balance));
+    getBalance(this.addr).then(balance => (this.balance = balance));
   },
 });
 </script>

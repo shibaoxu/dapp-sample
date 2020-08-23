@@ -2,20 +2,20 @@
   <v-container>
     <v-card>
       <v-data-table
-        :headers="headers"
-        :items="tokens"
-        show-expand
-        :expanded.sync="expanded"
-        item-key="symbol"
+          :headers="headers"
+          :items="tokens"
+          show-expand
+          :expanded.sync="expanded"
+          item-key="symbol"
       >
         <template v-slot:item.totalSupply="{ item }">
-          <!-- {{item.name}} -->
-          <span>{{ formatCurrency(item.totalSupply, item.decimal, item.symbol) }}</span>
+          <span>{{ item.totalSupply }}</span>
         </template>
         <template v-slot:item.name="{ item }">
           <router-link :to="{ name: 'Token', params: { ...item } }">{{
-            item.name
-          }}</router-link>
+              item.name
+            }}
+          </router-link>
         </template>
         <template v-slot:expanded-item="{ headers, item }">
           <td :colspan="headers.length" class="py-2 px-1 px-sm-4">
@@ -54,8 +54,9 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import { getTokens, TokenSummary } from "@/api/tokenApi";
+import {getTokens, TokenSummary} from "@/api/tokenApi";
 import numeral from "numeral";
+
 export default Vue.extend({
   name: "Token",
   components: {},
@@ -64,18 +65,18 @@ export default Vue.extend({
       expanded: [],
       tokens: [] as TokenSummary[],
       headers: [
-        { text: "名称", align: "start", sortable: false, value: "name" },
-        { text: "代码", align: "start", sortable: false, value: "symbol" },
-        { text: "发行量", align: "end", sortable: false, value: "totalSupply" },
+        {text: "名称", align: "start", sortable: false, value: "name"},
+        {text: "代码", align: "start", sortable: false, value: "symbol"},
+        {text: "发行量", align: "end", sortable: false, value: "totalSupply"},
       ],
     };
   },
   methods: {
-    formatCurrency(value: number, decimal: number, symbol: string): string {   
-      return `${numeral(value/(10**decimal)).format("0,0")} ${symbol}`;
+    formatCurrency(value: number, decimal: number, symbol: string): string {
+      return `${numeral(value / (10 ** decimal)).format("0,0")} ${symbol}`;
     },
   },
-  mounted: function() {
+  mounted: function () {
     getTokens().then(data => (this.tokens = data));
   },
 });

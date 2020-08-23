@@ -30,8 +30,9 @@
 </template>
 <script lang="ts">
 import Vue from "vue";
-import VerticalTextField from "@/components/VerticalTextField";
-import { getTokenSummary } from "../../../api/tokenApi";
+import VerticalTextField from "@/components/VerticalTextField.vue";
+import { getTokenSummary } from "@/api/tokenApi";
+
 export default Vue.extend({
   name: "Basic",
   props: {

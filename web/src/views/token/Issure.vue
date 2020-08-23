@@ -19,6 +19,7 @@
         :rules="formRules.decimalRules"
         label="精度"
         type="number"
+        disabled
         required
       />
       <v-text-field
@@ -38,7 +39,7 @@
 <script lang="ts">
 import Vue from "vue";
 import { issueToken } from "@/api/tokenApi";
-import router from "@/router" 
+import router from "@/router"
 export default Vue.extend({
   name: "Issure",
   data() {
@@ -47,8 +48,8 @@ export default Vue.extend({
       formData: {
         name: "",
         symbol: "",
-        decimal: 2,
-        supply: 10000,
+        decimal: 18,
+        supply: "10000",
       },
       formRules: {
         nameRules: [
@@ -66,7 +67,7 @@ export default Vue.extend({
         decimalRules: [
           (v: number) => !!v || "Decimal is required",
           (v: number) =>
-            (v >= 0 && v <= 16) ||
+            (v >= 0 && v <= 18) ||
             "Decimal must be less than 16 and more than 0",
         ],
         suppleRules: [
